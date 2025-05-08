@@ -1,0 +1,30 @@
+server:
+  port: 10000
+
+spring:
+  application:
+    name: mcp-client
+
+  ai:
+    mcp:
+      client:
+        name: my-mcp-client
+        version: 1.0.0
+        request-timeout: 60s  # 요청 타임아웃 (기본값: 20s)
+        type: SYNC
+        callback:
+          enabled: true
+        toolcallback:
+          enabled: true
+        sse:
+          connections:
+            aladin-mcp-server:
+              url: http://localhost:10001 # sse 연결
+    bedrock:
+      aws:
+        region: us-west-2
+        timeout: 5m  # AWS Bedrock API 요청 타임아웃 (기본값: 5m)
+
+logging:
+  level:
+    org.springframework.ai: DEBUG
